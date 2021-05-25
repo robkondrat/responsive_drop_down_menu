@@ -35,6 +35,7 @@ nav .content .links {
 }
 .content .links li {
   list-style: none;
+  line-height: 70px;
 }
 .content .links li a {
   color: #fff;
@@ -44,7 +45,7 @@ nav .content .links {
   border-radius: 5px;
   transition: all 0.3s ease;
 }
-.content .links li:hover a {
+.content .links li a:hover {
   background: #323c4e;
 }
 .wrapper .search-icon,
@@ -107,6 +108,41 @@ nav .content .links {
   display: none;
 }
 
+/* Dropdown Menu code start  */
+.content .links ul {
+  position: absolute;
+  background: #171c24;
+  top: 80px;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+}
+.content .links li:hover > ul {
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+.content .links ul li a {
+  display: block;
+  width: 100%;
+  line-height: 30px;
+  border-radius: 0px!important;
+}
+.content .links ul ul {
+  position: absolute;
+  top: 0;
+  /* right: calc(-100% + 8px); */
+  right: -59%;
+  /* not sure why the offset is -59%  */
+}
+.content .links ul li {
+  position: relative;
+}
+.content .links ul li:hover ul {
+  top: 0;
+}
+
 /* Responsive styling start  */
 @media screen and (max-width: 1250px) {
   .wrapper nav {
@@ -141,9 +177,10 @@ nav .content .links {
     height: 100%;
     width: 100%;
     top: 70px;
-    left: -100%;
+    left: 0%;
     margin-left: 0;
     max-width: 350px;
+    overflow-y: auto;
     transition: all 0.3s ease;
   }
   nav #show-menu:checked ~ .content .links {
